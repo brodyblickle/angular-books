@@ -1,0 +1,56 @@
+<form class="form-horizontal" name="editBookForm">
+<fieldset>
+<legend>Edit Book</legend>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="titleInput">Book Name</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="titleInput" type="text" placeholder="{{ editBookDetails.title }}" class="form-control input-md" disabled="true"></input>    
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="authorInput">Author</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="authorInput" type="text" placeholder="{{ editBookDetails.author }}" class="form-control input-md" disabled="true"></input>    
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="isbnInput">ISBN Code</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="isbnInput" type="text" placeholder="{{ editBookDetails.isbn }}" class="form-control input-md" disabled="true"></input>    
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="numberBooksInput"># of Books</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="numberBooksInput" type="text" placeholder="{{ editBookDetails.booksTotal }}" class="form-control input-md" required ng-model="editBookDetails.booksTotal"></input>    
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="publishDateInput">Publish Date</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="publishDateInput" type="text" placeholder="{{ editBookDetails.publishDate }}" class="form-control input-md" disabled="true"></input>    
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="bookCategoryInput">Book Category</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="bookCategoryInput" type="text" placeholder="{{ editBookDetails.category }}" class="form-control input-md" disabled="true"></input>    
+  </div>
+  </div>
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="numberBooksIssuedInput"># of Books Issued</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="numberBooksIssuedInput" type="text" placeholder="{{ editBookDetails.booksIssued }}" class="form-control input-md" disabled="true"></input>    
+  </div>
+  </div>
+  <div class="form-group hidden">
+  <label class="col-md-4 control-label" for="bookIdInput">Book ID</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="bookIdInput" type="hidden" placeholder="{{ editBookDetails.id }}" class="form-control input-md" ng-model="book1.bookId"></input>    
+  </div>
+  </div>
+  <button type="submit" class="btn btn-success btn-sm" ui-sref="home" ui-sref-active="active" ng-click="updateBookTotals()">Submit</button>
+      <a class="btn btn-warning btn-sm" ui-sref="home" ui-sref-active="active" ng-click="goToUrl(/)">Cancel</a>
+</fieldset>
+  <span ng-show="editBookForm.numberBooksInput.$touched && editBookForm.numberBooksInput.$invalid">Number of books is required.</span>
+</form>

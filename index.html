@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Books</title>
+    
+    
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+  </head>
+  <body ng-app="myApp" ng-controller="MainController" ng-cloak>
+
+    <div class="container-fluid">
+      <div ng-cloak="" class="tabs">
+        <md-content> 
+          <md-tabs md-dynamic-height="" md-border-bottom="">
+            <md-tab label="Books" ui-sref="home" ui-sref-active="active" ng-click="goToUrl(/)">
+              <md-content class="md-padding">
+                <table class="table table-bordered table-hover table-responsive" id="myTable">
+                  <thead>
+                    <tr>
+                      <th ng-repeat="headers in bookColumns">
+                        {{ headers.Name}}
+                      </th>			
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="clickable-row" ng-repeat="book in bookList" ng-click="selectRow(book)">
+                      <td>
+                        {{ book.title}}
+                      </td>
+                      <td>
+                        {{ book.author}}
+                      </td>
+                      <td>
+                        {{ book.isbn}}
+                      </td>
+                      <td>
+                        {{ book.booksTotal}}
+                      </td>
+                      <td>
+                        {{ book.publishDate}}
+                      </td>
+                      <td>
+                        {{ book.category}}
+                      </td>
+                      <td>
+                        {{ book.booksIssued}}
+                      </td>
+                      <td>
+                        {{ book.id}}
+                      </td>			
+                    </tr>
+                  </tbody>
+                </table>
+  <div class="row">
+          <div class="col-md-6 text-center col-md-offset-3">
+            <a class="btn btn-success btn-sm" ui-sref="add" ui-sref-active="active" ng-click="goToUrl(/add)">Add</a>
+            <a class="btn btn-warning btn-sm" ui-sref="editBook" ui-sref-active="active" ng-click="editRow(row)">Edit</a>
+            <a class="btn btn-sm btn-danger" ui-sref="delete" ui-sref-active="active" ng-click="deleteBook(row)">Delete</a>
+            <ui-view></ui-view>
+            <ng-include ></ng-include>      
+          </div>
+        </div>
+              </md-content>
+            </md-tab>
+            <md-tab label="Transactions" ui-sref="home" ui-sref-active="active" ng-click="goToUrl(/)">
+              <md-content class="md-padding">
+                <table class="table table-bordered table-hover table-responsive" id="myTable">
+                  <thead>
+                    <tr>
+                      <th ng-repeat="headers in transactionColumns">
+                        {{ headers.Name}}
+                      </th>			
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="clickable-row" ng-repeat="transaction in transactionList" ng-click="selectRow(transaction)">
+                      <td>
+                        {{ transaction.id}}
+                      </td>
+                      <td>
+                        {{ transaction.bookId}}
+                      </td>
+                      <td>
+                        {{ transaction.date | date : "MM.dd.yyyy HH:mm"}}
+                      </td>
+                      <td>
+                        {{ transaction.type}}
+                      </td>
+                      <td>
+                        {{ transaction.returnDate  | date : "MM.dd.yyyy HH:mm"}}
+                      </td>			
+                    </tr>
+                  </tbody>
+                </table>
+<div class="row">
+          <div class="col-md-6 text-center col-md-offset-3">
+            <a class="btn btn-success btn-sm" ui-sref="addTransaction" ui-sref-active="active" ng-click="goToUrl(/addTransaction)">Add</a>
+            <!-- <a class="btn btn-warning btn-sm" ui-sref="editTransaction" ui-sref-active="active" ng-click="editRow(row)">Edit</a> -->
+            <ui-view></ui-view>
+            <ng-include ></ng-include>      
+          </div>
+        </div>
+              </md-content>
+            </md-tab>
+
+          </md-tabs>
+        </md-content>
+
+      </div>
+      <div class="row">
+
+        
+        <hr>
+      </div>
+      <div class="container">
+        
+        <hr>
+
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+      <script src="assets/js/jquery-1.11.3.min.js"></script>
+
+      <!-- Include all compiled plugins (below), or include individual files as needed --> 
+      <script src="assets/js/bootstrap.js"></script>
+      
+      
+
+      <!-- Angular.js and Angular Material, UI Router -->
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+      <script src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <!-- Angular Material Library -->
+      <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+      
+      <!-- Modules -->
+      <script src='app/app.module.js'></script>
+      <script src='app/app.routes.js'></script>
+
+      <!-- Controllers -->
+      <script src='app/components/home/MainController.js'></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<form name="addTransactionForm" class="form-horizontal"  ng-submit="submitForm(addTransactionForm.$valid)" novalidate>
+<fieldset>
+<legend>Add a Transaction</legend>
+<div class="form-group">
+  <label class="col-md-4 control-label">Book</label> 
+  <div class="col-md-4">
+      <select class="form-control input-md" ng-model="transaction.bookId" required>
+        <option value="{{ book.id }}" ng-repeat="book in bookList">{{ book.id + ' - '  + book.title }}</option>
+  </select> 
+  </div>
+</div>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Transaction Type</label>  
+  <div class="col-md-4">
+    <select class="form-control input-md" ng-model="transaction.type" required>
+      <option value="issue" selected="">Issue</option>
+      <option value="return">Return</option>
+    </select>
+  </div>
+</div>
+
+<button type="submit" value="Submit" class="btn btn-success" ng-click="addTransactionAsync(transaction)" ui-sref="home" ng-disabled="addTransactionForm.$invalid">Submit</button>
+<a class="btn btn-warning btn-sm" ui-sref="home" ui-sref-active="active" ng-click="goToUrl(/)">Cancel</a>
+</fieldset>
+</form>
